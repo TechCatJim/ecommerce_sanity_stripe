@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import { client, urlFor } from "../../lib/client";
 import {
   AiOutlineMinus,
@@ -12,13 +13,18 @@ import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setQty, setShowCart } = useStateContext();
   const handleBuyNow = () => {
     onAdd(product, qty);
     setShowCart(true);
+    // setQty(1);
   };
 
-  console.log("image", product.image);
+  useEffect(() => {
+    // setQty(1);
+    return setQty(1);
+  }, []);
+
   return (
     <div>
       <div className="product-detail-container">
@@ -88,7 +94,7 @@ const ProductDetails = ({ product, products }) => {
         <h2> You may also like</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {products.map((item) => (
+            {products?.map((item) => (
               <Product key={item._id} product={item} />
             ))}
           </div>

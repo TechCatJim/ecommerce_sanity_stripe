@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
 
+// import { useStateContext } from "../context/StateContext";
 const Product = ({ product: { image, name, slug, price } }) => {
+  // const { setQty } = useStateContext();
+  // useEffect(() => {
+  //   setQty(1);
+  // }, []);
+
   return (
-    <div>
+    <>
       <Link href={`/product/${slug.current}`}>
         <div className="product-card">
           <img
@@ -18,8 +24,13 @@ const Product = ({ product: { image, name, slug, price } }) => {
           <p className="product-price">${price}</p>
         </div>
       </Link>
-    </div>
+    </>
   );
 };
+
+Product.getInitialProps = ({ query }) => ({
+  currentslug: query.product.slug.current,
+  key: query.product.slug.current,
+});
 
 export default Product;

@@ -24,6 +24,8 @@ const Cart = () => {
     toggleCartItemQuantity,
   } = useStateContext();
 
+  console.log(cartItems);
+
   const handleCheckout = async () => {
     const stripe = await getStripe();
 
