@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <p className="logo">
-        <Link href="/">Music Headphones</Link>
+        <Link href="/">James Music Store</Link>
       </p>
       <button
         type="button"

@@ -2,13 +2,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
 
-// import { useStateContext } from "../context/StateContext";
 const Product = ({ product: { image, name, slug, price } }) => {
-  // const { setQty } = useStateContext();
-  // useEffect(() => {
-  //   setQty(1);
-  // }, []);
-
   return (
     <>
       <Link href={`/product/${slug.current}`}>
